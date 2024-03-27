@@ -1,18 +1,23 @@
-import './App.css';
-import Hello from "./Component/Hello";
-import Welcome from "./Component/Welcome";
+import "./App.css";
+import Header from "./Component/Header";
+import DayList from "./Component/DayList";
+import Day from "./Component/Day";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import EmptyPage from "./Component/EmptyPage";
 
 function App() {
   return (
     <div className="app">
-      <Hello age={30}></Hello>
-      {/* <Hello age={20}></Hello>
-      <Hello age={10}></Hello> */}
-      <Welcome text={"어서오세요."}>
-      </Welcome>
-
-    </div>    
-  )
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<DayList />} />
+          <Route path="/day/:day" element={<Day />} />
+          <Route path="*" element={<EmptyPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+export default App;
