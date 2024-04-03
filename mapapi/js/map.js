@@ -64,3 +64,7 @@ let mapBoard = `
 </div>`;
 
 document.querySelector("body").innerHTML += mapBoard;
+
+
+
+  
