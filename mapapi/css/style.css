@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.nav_wrapper {
+  width: 100vw;
+  height: 80px;
+  display: flex; /* 요소들을 수평으로 배치하기 위해 flex 사용 */
+  align-items: center; /* 요소들을 수직으로 가운데 정렬 */
+  background-color: #f8f8f8;
+}
+
+.nav_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 요소들을 수직으로 가운데 정렬 */
+  width: 100vw;
+  height: 100%; /* 내비게이션 바의 높이를 가득 채우도록 설정 */
+}
+
+.nav_container > a {
+  padding-left: 30px;
+}
+
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nav_logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav_list_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 10px;
+}
+
+.nav_list {
+  justify-content: center;
+  margin: auto 10px;
+}
+
+.nav_list a {
+  font-size: 15px;
+
+  color: lightskyblue;
+}
+#map {
+  width: 100%;
+  height: 960px;
+}
+
+.map-sidebar-wrapper {
+  z-index: 9999;
+  position: absolute; /* map-sidebar-wrapper를 상대적인 위치에 대해 절대적으로 배치합니다. */
+  width: 450px;
+  height: 95%;
+  top: 2.5%; /* 상위 요소(map-sidebar)의 50% 위치에 배치합니다. */
+  left: 2%; /* 상위 요소(map-sidebar)의 50% 위치에 배치합니다. */  background-color: #ffffff;
+  border-radius: 45px;
+  border: 4px solid;
+  border-color: #b8d9fc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* sidebar - header */
+.sidebar-header {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin: 20px auto;
+}
+
+.sidebar-searchbar-container {
+  position: relative;
+  width: 310px;
+  height: 50px;
+  background-color: #d7d7d7;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-input-box {
+  position: relative;
+  width: 250px;
+  height: 40px;
+  border: none;
+  border-radius: 50px;
+  margin: auto;
+  background-color: white;
+  padding: 0px 25px;
+ 
+}
+
+#sidebar-search-input {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  border: none;
+  margin: auto;
+  line-height: 40px;
+  font-size: larger;
+}
+
+#sidebar-search-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #ebebeb;
+  border-radius: 40px;
+  border: none;
+  margin: auto;
+}
+
+.sidebar-shift-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: #d9d9d9;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-shift-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #ebebeb;
+  border-radius: 40px;
+  border: none;
+  margin: auto;
+}
+
+/* sidebar - content */
+.sidebar-content {
+  width: 380px;
+  height: 500px;
+  background-color: #f7f7f7;
+  margin: 0px auto 15px;
+  border-radius: 25px;
+}
+
+.sidebar-content-img {
+  width: 360px;
+  height: 280px;
+  background-image: url("../assets/img/info-img-wireframe.png");
+  background-size: 100%;
+  margin: 10px auto 0px;
+  border-radius: 18px;
+  opacity: 0.3;
+}
+
+.sidebar-main-menu {
+  width: 380px;
+  height: 50px;
+  margin: auto;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-tab-btn {
+  width: 40px;
+  height: 40px;
+  background-size: 100%;
+  opacity: 0.3;
+}
+
+#menu-like-btn {
+  background-image: url(../assets/img/menu-like-icon.svg);
+}
+#menu-call-btn {
+  background-image: url(../assets/img/menu-call-icon.png);
+}
+#menu-share-btn {
+  background-image: url(../assets/img/menu-share-icon.png);
+}
+
+
+
+/* sidebar - footer */
+.sidebar-footer {
+  width: 380px;
+  height: 200px;
+  background-color: #f7f7f7;
+  margin: 5px auto 15px;
+  border-radius: 25px;
+  overflow: hidden;
+}
