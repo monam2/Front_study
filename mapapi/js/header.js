@@ -54,4 +54,4 @@ let headerElement = `<nav class="nav_wrapper navbar navbar-light bg-light static
 </div>
 </nav>`;
 
-document.querySelector("body").innerHTML = headerElement;
+document.querySelector("#header").innerHTML = headerElement;
