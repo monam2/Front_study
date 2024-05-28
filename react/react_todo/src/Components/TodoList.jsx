@@ -1,7 +1,7 @@
 import React, { useState } from 'react' // eslint-disable-line no-unused-vars
 import TodoItem from './TodoItem';
 
-const TodoList = ({todos, deleteHandler}) => {
+const TodoList = ({todos, deleteHandler, onUpdate}) => {
     const [search, setSearch] = useState("");
 
     const onChangeSearch = (e)=> {
@@ -22,7 +22,7 @@ const TodoList = ({todos, deleteHandler}) => {
         <input type="text" onChange={onChangeSearch} placeholder="검색어를 입력하세요."/>
         <div className="todos_wrapper">
     {
-        filterTodos().map(todo=><TodoItem key={todo.id} todo={todo} deleteHandler={deleteHandler}/>)
+        filterTodos().map(todo=><TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} deleteHandler={deleteHandler}/>)
     }
 
             
