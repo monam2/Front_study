@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer, useRef, useState } from "react"; // eslint-disable-line no-unused-vars
+import React, { useCallback, useMemo, useReducer, useRef, useState } from "react"; // eslint-disable-line no-unused-vars
 import "./App.css";
 import Header from "./Components/Header";
 import TodoEditor from "./Components/TodoEditor";
 import TodoList from "./Components/TodoList";
 import { todo_data } from "./todo_data";
+import { TodoStateContext, TodoDispatchContext } from "./TodoContext";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,30 +37,37 @@ const App = () => {
     });
   };
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "UPDATE",
       data: targetId,
     });
-  };
+  }, []);
 
-  const deleteHandler = (id) => {
+  const deleteHandler = useCallback((id) => {
     dispatch({
       type: "DELETE",
       data: id,
     });
-    // setTodos([...todos.filter((todo) => todo.id !== id)]);
-  };
+  }, []);
+
+  const memoizedDispatches = useMemo(() => {
+    return {
+      onCreate,
+      onUpdate,
+      deleteHandler,
+    };
+  }, []);
 
   return (
     <div className="App">
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList
-        todos={todos}
-        deleteHandler={deleteHandler}
-        onUpdate={onUpdate}
-      />
+      <TodoStateContext.Provider value={todos}>
+        <TodoDispatchContext.Provider value={memoizedDispatches}>
+          <TodoEditor />
+          <TodoList />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
     </div>
   );
 };

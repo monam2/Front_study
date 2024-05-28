@@ -1,6 +1,10 @@
-import React, { useRef, useState } from "react"; // eslint-disable-line no-unused-vars
+import React, { useRef, useState, useContext } from "react"; // eslint-disable-line no-unused-vars
+import { TodoDispatchContext } from "../TodoContext";
 
-const TodoEditor = ({ onCreate }) => {
+const TodoEditor = () => {
+
+  const {onCreate} = useContext(TodoDispatchContext);
+
   const [content, setContent] = useState("");
   const inputRef = useRef();
 

@@ -1,4 +1,4 @@
-import React from "react"; // eslint-disable-line no-unused-vars
+import React, { memo } from "react"; // eslint-disable-line no-unused-vars
 
 const Header = () => {
   return (
@@ -10,4 +10,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+
+export default memo(Header);
