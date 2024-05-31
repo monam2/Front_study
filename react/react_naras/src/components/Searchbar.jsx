@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "./Searchbar.module.css"
 import { useNavigate } from "react-router-dom";
 
-const Searchbar = () => {
+const Searchbar = ({q}) => {
     const router = useNavigate();
     const [search, setSearch] = useState("");
+
+    useEffect(()=>{
+        setSearch(q);
+    }, [q])
 
     const onChangeSearch = (e)=> {
         setSearch(e.target.value);
