@@ -22,9 +22,9 @@ const CommonNav = () => {
     );
   });
 
-  return <div className={styles.navigation}>
+  return <nav className={styles.navigation}>
     {navLinks}
-  </div>;
+  </nav>;
 };
 
 export default CommonNav;
