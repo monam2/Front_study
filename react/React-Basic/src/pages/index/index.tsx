@@ -4,42 +4,27 @@ import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 import CommonNav from "@/components/common/navigation/CommonNav";
 import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./../../components/Card";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CardDTO } from "./types/card";
+import { useRecoilValue } from "recoil";
+import { imageData } from "@/store/selectors/imageSelector";
+import DetailDialog from "@/components/common/dialog/DetailDialog";
 
 const index = () => {
-  const [imgUrls, setImgUrls] = useState([]);
+  const [imgData, setImgData] = useState<CardDTO>();
+  const imgSelector = useRecoilValue(imageData);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const fetchData = async () => {
-    //오픈 API 호출
-    const API_URL = "https://api.unsplash.com/search/photos";
-    const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
-    const PER_PAGE = 30;
-
-    const searchValue = "Korea";
-    const pageValue = 100;
-
-    try {
-      const res = await axios.get(
-        `${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${pageValue}&per_page=${PER_PAGE}`
-      );
-      console.log(res.data.results)
-      if (res.status === 200) {
-        setImgUrls(res.data.results);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const cardList = imgUrls.map((card: CardDTO) => {
-    return <Card data={card} key={card.id} />;
+  const CARD_LIST = imgSelector.map((card: CardDTO) => {
+    return (
+      <Card
+        data={card}
+        key={card.id}
+        handleDialog={setOpen}
+        handleSetData={setImgData}
+      />
+    );
   });
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className={styles.page}>
@@ -61,12 +46,11 @@ const index = () => {
             <CommonSearchBar />
           </div>
         </div>
-        <div className={styles.page__contents__imageBox}>
-            {cardList}
-        </div>
+        <div className={styles.page__contents__imageBox}>{CARD_LIST}</div>
       </div>
       {/* 공통 푸터 UI 부분 */}
       <CommonFooter />
+      {open && <DetailDialog data={imgData} handleDialog={setOpen} />}
     </div>
   );
 };
