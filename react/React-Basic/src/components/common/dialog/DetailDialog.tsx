@@ -13,7 +13,10 @@ const DetailDialog = ({ data, handleDialog }: Props) => {
 
   return (
     <div className={styles.container} onClick={closeDialog}>
-      <div className={styles.container__dialog} onClick={(e)=>e.stopPropagation()}>
+      <div
+        className={styles.container__dialog}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.container__dialog__header}>
           <div className={styles.close}>
             <button className={styles.close__button}>
@@ -22,7 +25,9 @@ const DetailDialog = ({ data, handleDialog }: Props) => {
                 className="material-symbols-outlined"
                 style={{ fontSize: 28 + "px" }}
                 onClick={closeDialog}
-              >close</span>
+              >
+                close
+              </span>
             </button>
             <img
               src={data.user.profile_image.small}
