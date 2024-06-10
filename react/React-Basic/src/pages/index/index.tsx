@@ -6,9 +6,10 @@ import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./../../components/Card";
 import { useMemo, useState } from "react";
 import { CardDTO } from "./types/card";
-import { useRecoilValue, useRecoilValueLoadable } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 import { imageData } from "@/store/selectors/imageSelector";
 import DetailDialog from "@/components/common/dialog/DetailDialog";
+import Loading from "@/components/Loading";
 
 const index = () => {
   const [imgData, setImgData] = useState<CardDTO>();
@@ -16,20 +17,9 @@ const index = () => {
   const imgSelector = useRecoilValueLoadable(imageData);
   const [open, setOpen] = useState<boolean>(false);
 
-  // const CARD_LIST = imgSelector.map((card: CardDTO) => {
-  //   return (
-  //     <Card
-  //       data={card}
-  //       key={card.id}
-  //       handleDialog={setOpen}
-  //       handleSetData={setImgData}
-  //     />
-  //   );
-  // });
-
   const CARD_LIST = useMemo(() => {
     if (imgSelector.state == "hasValue") {
-      const result = imgSelector.contents.map((card: CardDTO) => {
+      const result = imgSelector.contents.results.map((card: CardDTO) => {
         return (
           <Card
             data={card}
@@ -41,7 +31,7 @@ const index = () => {
       });
       return result;
     } else {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
   }, [imgSelector]);
 

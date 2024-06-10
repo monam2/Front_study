@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import styles from "./CommonSearchBar.module.scss";
 import { useRecoilState } from "recoil";
 import { searchState } from "@/store/atoms/searchState";
+import { pageState } from "@/store/atoms/pageState";
 
 const CommonSearchBar = () => {
   const [search, setSearch] = useRecoilState(searchState);
+  const [page, setPage] = useRecoilState(pageState);
   const [text, setText] = useState("");
-  const onChange = (event: React.KeyboardEvent) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      if (!text === "") {
+      if (text === "") {
         setSearch("Korea");
       } else {
         setSearch(text);
@@ -20,11 +22,12 @@ const CommonSearchBar = () => {
   };
 
   const onSearch = () => {
-    if (!text === "") {
+    if (text === "") {
       setSearch("Korea");
     } else {
       setSearch(text);
     }
+    setPage(1);
   };
 
   return (
