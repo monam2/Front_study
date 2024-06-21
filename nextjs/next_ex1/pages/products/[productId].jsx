@@ -1,6 +1,6 @@
 import { fetchProductDetail } from "@/api";
-import ProductHeader from "@/components/ProductHeader";
-import ProductInfoPage from "@/components/ProductInfo";
+import ProductHeader from "@/components/product/ProductHeader";
+import ProductInfoPage from "@/components/product/product-detail/ProductInfo";
 import React from "react";
 
 function ProductDetailPage({ productDetail }) {
