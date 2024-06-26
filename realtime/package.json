@@ -1,0 +1,23 @@
+{
+  "name": "webrtc",
+  "version": "1.0.0",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "license": "MIT",
+  "description": "use WebRTC and WebSocket",
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/node": "^7.24.7",
+    "@babel/preset-env": "^7.24.7"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "pug": "^3.0.3"
+  }
+}
